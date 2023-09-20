@@ -20,6 +20,10 @@ pipeline {
                 sh "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
             }
         }
-
+    stage('Create Tomcat Docker container'){
+            steps {
+                sh "docker run -d --name simpleproject -p 8082:8080 tomcatsamplewebapp:${env.BUILD_ID}"
+            }
+        }
     }
 }
